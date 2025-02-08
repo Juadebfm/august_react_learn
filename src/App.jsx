@@ -1,41 +1,37 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
-// Normal Components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-// Page Components
-import HomePage from "./pages/HomePage";
-import CoursesCategoryPage from "./pages/CoursesCategoryPage";
-import SigninPage from "./pages/SigninPage";
-import SignupPage from "./pages/SignupPage";
-import OrderSuccessPage from "./pages/OrderSuccessPage";
-import CourseViewPage from "./pages/CourseViewPage";
-import CourseDetailsPage from "./pages/CourseDetailsPage";
-import CheckoutPage from "./pages/CheckoutPage";
-import CartPage from "./pages/CartPage";
-import MentorsPage from "./pages/MentorsPage";
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router'
+// Components Import 
+import Navbar from "./components/Header"
+import Footer from "./components/Footer"
+// Page Imports
+import HomePage from "./pages/HomePage"
+import SignupPage from "./pages/SignupPage"
+import LoginPage from "./pages/LoginPage"
+import CategoryPage from "./pages/CategoryPage"
+import CourseDetailsPage from "./pages/CourseDetailsPage"
+import ShoppingCartPage from "./pages/ShoppingCartPage"
 
 const App = () => {
   return (
-    <div className="font-inter text-main_gray overflow-x-hidden">
+    <div className='min-h-screen overflow-x-hidden font-inter text-base'>
       <Router>
-        <Navbar />
+        <Navbar/>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/category" element={<CoursesCategoryPage />} />
-          <Route path="/signin" element={<SigninPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/order-completed" element={<OrderSuccessPage />} />
-          <Route path="/classes" element={<CourseViewPage />} />
-          <Route path="/course-details" element={<CourseDetailsPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/mentors" element={<MentorsPage />} />
+          <Route path='/' element={<HomePage/> }/>
+          {/* // Auth Pages */}
+          <Route path='/signup' element={<SignupPage/> }/>
+          <Route path='/login' element={<LoginPage/> }/>
+
+          {/* Auth User's Page */}
+          <Route path='/category-page' element={<CategoryPage/>}/>
+          <Route path='/course-details' element={<CourseDetailsPage/>}/>
+          <Route path='/shopping-cart' element={<ShoppingCartPage/>}/>
+          <Route path='/mentors-page' element={<ShoppingCartPage/>}/>
         </Routes>
-        <Footer />
+        <Footer/>
       </Router>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

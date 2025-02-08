@@ -1,8 +1,8 @@
-# Learn React
+# React + Vite
 
-## How to setup routing in react
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- run `npm i react-router`
-- go to your app.jsx/app.js and import "{BrowserRouter}"
-- Also import "Routes" & "Route"
-- Watch the video recorded on the Sunday 2nd Febraury 2025 to see how it's used.
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
