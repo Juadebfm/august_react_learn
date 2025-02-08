@@ -11,6 +11,8 @@ import CategoryPage from "./pages/CategoryPage"
 import CourseDetailsPage from "./pages/CourseDetailsPage"
 import ShoppingCartPage from "./pages/ShoppingCartPage"
 
+// todo: Fix for 1024 -1080 px screen
+
 const App = () => {
   return (
     <div className='min-h-screen overflow-x-hidden font-inter text-base'>

@@ -10,7 +10,7 @@ import { AlignJustify } from "lucide-react";
 
 const Header = () => {
   return (
-    <nav className="capitalize flex items-center justify-between px-[35px] lg:px-20 py-6 border-b border-[#E2E8F0]">
+    <nav className="capitalize flex items-center justify-between px-[35px] md:px-16 lg:px-20 py-6 border-b border-[#E2E8F0]">
       <img src={ByWay} alt="Company Logo" />
       <Link to="/category-page" className="hidden lg:block">Category</Link>
       <div className="hidden relative border border-main_heading h-[40px] lg:flex items-center justify-start w-[622px] rounded-md">
