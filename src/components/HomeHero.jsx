@@ -14,7 +14,7 @@ const HomeHero = () => {
         </p>
         <Button
           btnText="Start your instructor journey"
-          btnStyle="bg-[#3B82F6] h-[40px] text-white w-full lg:w-max justify-center lg:justify-start rounded-md mt-6 mb-10 lg:mb-0"
+          btnStyle="bg-[#3B82F6] dark:bg-red-500 h-[40px] text-white w-full lg:w-max justify-center lg:justify-start rounded-md mt-6 mb-10 lg:mb-0"
         />
       </div>
       <div>
