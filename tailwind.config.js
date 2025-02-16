@@ -12,7 +12,9 @@ export default {
       },
       colors:{
         main_text:"#334155",
-        main_heading: "#0F172A"
+        main_heading: "#0F172A",
+        main_skyblue:"#E0F2FE",
+        main_blue:"#3B82F6"
       }
     },
   },
