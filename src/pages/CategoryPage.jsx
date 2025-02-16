@@ -1,11 +1,19 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from '../context/ThemeContext';
+import React from 'react'
+import { useModal } from '../context/ModalContext';
 
 const CategoryPage = () => {
-  // to use the reservior of the context we say:
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext); //accessing theme data
+  const {openModal} = useModal();
   return (
-    <div className='min-h-screen bg-blue-500 dark:bg-purple-500 text-black'>CategoryPage</div>
+    <div className='mt-32'>
+      <button
+        onClick={() => {
+          openModal("We are in the category page");
+        }}
+        className='py-3 px-6 bg-blue-500 text-white dark:bg-yellow-500 dark:text-black'
+      >
+        Open Modal
+      </button>
+    </div>
   )
 }
 

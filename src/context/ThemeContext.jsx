@@ -1,7 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 // create a global resorvior where we can access the functionalities in this context.
-export const ThemeContext = createContext();
+const ThemeContext = createContext();
 
 
 
@@ -34,4 +34,13 @@ const ThemeProvider = ({ children }) => {
   )
 };
 
-export default ThemeProvider
+export default ThemeProvider;
+
+// custom hook
+export const useThemeContext = () => {
+  const context = useContext(ThemeContext);
+  if(!context) {
+    throw new Error("`useTheme` must be used within a `UseTheme`")
+  }
+  return context;
+}
