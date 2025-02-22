@@ -9,7 +9,7 @@ export const JsonPlaceholderProvider = ({ children }) => {
 
   // effectual logic, so if we put something in the dependency array, it triggers the useEffect, if not it runs everytime the component renders
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://jsonplaceholder.typicode.com/posts") // simple get method
       .then((response) => {
        
         return response.json();
