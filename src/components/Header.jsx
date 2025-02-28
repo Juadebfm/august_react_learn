@@ -11,11 +11,11 @@ const Header = () => {
   // UseTheme Context
   const { isDarkMode, toggleTheme } = useThemeContext();
   // State for menu open and close
-  const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+  const [ isMenuOpen, setIsMenuOpen ] = useState(false); // isMenuOpen = false
 
   // Create a menu toggle function
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
+    setIsMenuOpen(!isMenuOpen) // isMenuOpen from false to true, true to false
   }
   return (
     <header className="fixed w-full z-50">

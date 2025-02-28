@@ -43,30 +43,97 @@ export const AuthProvider = ({ children }) => {
         }),
       };
 
-
       // make the api call
-      const response = await fetch("http://localhost:3002/api/auth/signup", reqObj);
+      const response = await fetch(
+        "https://byway-backend.vercel.app/api/auth/signup",
+        reqObj
+      );
       const data = await response.json();
 
-      if(!response.ok) {
+      if (!response.ok) {
         throw new Error(data.message || "Signup Failed");
       }
 
-      return data; 
+      return data;
     } catch (error) {
-        setError(error.message);
-        throw error
+      setError(error.message);
+      throw error;
     }
   };
 
   // signin logic
+  const signin = async (credentials) => {
+    try {
+      // Backend accepts either username or email
+      const { username, email, password } = credentials;
 
+      if ((!username && !email) || !password) {
+        throw new Error("Please provide username/email and/or Password");
+      }
+
+      // RequestObj
+      const reqObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      };
+
+      const response = await fetch(
+        "https://byway-backend.vercel.app/api/auth/signin",
+        reqObj
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Signin Failed");
+      }
+
+      //store user data if login successful
+      if (data.success && data.user) {
+        localStorage.setItem("userData", JSON.stringify(data.user));
+        setUser(data.user);
+      }
+
+      return data;
+    } catch (error) {
+      setError(error.message);
+      throw error;
+    }
+  };
   // signout
   const signout = () => {
     localStorage.removeItem("userData");
-    setUser(null)
-    setError(null)
-  }
+    setUser(null);
+    setError(null);
+  };
+
+  const clearError = () => {
+    setError(null);
+  };
+
+  // collate the logic and important context elements
+  const value = {
+    user,
+    loading,
+    error,
+    signup,
+    signin,
+    signout,
+    isAuthenticated: !!user,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => {
