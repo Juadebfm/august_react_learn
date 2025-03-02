@@ -11,12 +11,20 @@ const Header = () => {
   // UseTheme Context
   const { isDarkMode, toggleTheme } = useThemeContext();
   // State for menu open and close
-  const [ isMenuOpen, setIsMenuOpen ] = useState(false); // isMenuOpen = false
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // isMenuOpen = false
 
   // Create a menu toggle function
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen) // isMenuOpen from false to true, true to false
-  }
+    setIsMenuOpen(!isMenuOpen); // isMenuOpen from false to true, true to false
+  };
+
+  const goToSignup = () => {
+    window.location.href = "/signup"; // http://localhost:5173/signup
+  };
+  const goToSignin = () => {
+    window.location.href = "/login";
+  };
+
   return (
     <header className="fixed w-full z-50">
       <nav className="capitalize flex items-center justify-between px-[35px] md:px-16 lg:px-20 py-6 border-b border-[#E2E8F0] bg-white dark:bg-gray-900 dark:text-white">
@@ -58,10 +66,12 @@ const Header = () => {
             <Button
               btnText="Login"
               btnStyle="w-auto h-[40px] border border-main_heading bg-transparent text-sm"
+              btnFunc={goToSignin}
             />
             <Button
               btnText="Sign Up"
               btnStyle="w-auto h-[40px] border border-main_heading bg-main_heading text-white text-sm"
+              btnFunc={goToSignup}
             />
           </div>
         </div>
@@ -91,18 +101,18 @@ const Header = () => {
 
           <div className="lg:hidden items-center justify-center gap-6">
             <div className="flex items-center justify-start gap-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
-            >
-              {isDarkMode ? (
-                <Sun className="text-yellow-400" size={23}/>
-              ) : (
-                <MoonIcon className="text-gray-400" size={23}/>
-              )}
-            </button>
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
+              >
+                {isDarkMode ? (
+                  <Sun className="text-yellow-400" size={23} />
+                ) : (
+                  <MoonIcon className="text-gray-400" size={23} />
+                )}
+              </button>
 
-            <IoCartOutline size={23} />
+              <IoCartOutline size={23} />
             </div>
 
             <div className="flex-col flex items-center justify-center gap-4 mt-8">

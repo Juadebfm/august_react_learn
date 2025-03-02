@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null); // errors
 
   //Checking if the user data is present in the local storage
-  // only json, it cannot take objects, when we are storing information nin the local storage we mostly convert the object to JSON by stringifying the object, which mains converting the obj to json: Stringify means converting from object to JSON and "parsing" or "parse" is vice-versa.
+  // Local storage, it cannot take objects, when we are storing information in the local storage we mostly convert the object to JSON by stringifying the object, which mains converting the obj to json: Stringify means converting from object to JSON and "parsing" or "parse" is vice-versa.
   useEffect(() => {
     const userData = localStorage.getItem("userData");
     if (userData) {
@@ -126,6 +126,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     signin,
     signout,
+    clearError,
     isAuthenticated: !!user,
   };
 

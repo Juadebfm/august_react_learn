@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 // Components Import
 import Navbar from "./components/Header";
 import Footer from "./components/Footer";
@@ -14,34 +19,48 @@ import MentorsPage from "./pages/MentorsPage";
 import ThemeProvider from "./context/ThemeContext";
 import { JsonPlaceholderProvider } from "./context/JsonPlaceholderContext";
 import { ModalProvider } from "./context/ModalContext";
+import { AuthProvider } from "./context/AuthContext";
 
-// todo: Fix for 1024 -1080 px screen
+// Layout component that conditionally renders Navbar
+const AppLayout = () => {
+  const location = useLocation();
+  const isAuthPage =
+    location.pathname === "/login" || location.pathname === "/signup";
+
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* Auth Pages */}
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Auth User's Page */}
+        <Route path="/category-page" element={<CategoryPage />} />
+        <Route path="/course-details" element={<CourseDetailsPage />} />
+        <Route path="/shopping-cart" element={<ShoppingCartPage />} />
+        <Route path="/mentors-page" element={<MentorsPage />} />
+      </Routes>
+      {!isAuthPage && <Footer />}
+    </>
+  );
+};
 
 const App = () => {
   return (
     <div className="min-h-screen overflow-x-hidden font-inter text-base dark:bg-gray-900 text-gray-900 dark:text-white">
-      <ModalProvider>
-        <JsonPlaceholderProvider>
-          <ThemeProvider>
-            <Router>
-              <Navbar />
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                {/* // Auth Pages */}
-                <Route path="/signup" element={<SignupPage />} />
-                <Route path="/login" element={<LoginPage />} />
-
-                {/* Auth User's Page */}
-                <Route path="/category-page" element={<CategoryPage />} />
-                <Route path="/course-details" element={<CourseDetailsPage />} />
-                <Route path="/shopping-cart" element={<ShoppingCartPage />} />
-                <Route path="/mentors-page" element={<MentorsPage />} />
-              </Routes>
-              <Footer />
-            </Router>
-          </ThemeProvider>
-        </JsonPlaceholderProvider>
-      </ModalProvider>
+      <AuthProvider>
+        <ModalProvider>
+          <JsonPlaceholderProvider>
+            <ThemeProvider>
+              <Router>
+                <AppLayout />
+              </Router>
+            </ThemeProvider>
+          </JsonPlaceholderProvider>
+        </ModalProvider>
+      </AuthProvider>
     </div>
   );
 };
