@@ -21,6 +21,7 @@ import { JsonPlaceholderProvider } from "./context/JsonPlaceholderContext";
 import { ModalProvider } from "./context/ModalContext";
 import { AuthProvider } from "./context/AuthContext";
 import Dashboardpage from "./pages/Dashboard";
+import { ProtectedRoutes } from "./utils/ProtectedRoutes";
 
 // Layout component that conditionally renders Navbar
 const AppLayout = () => {
@@ -37,12 +38,47 @@ const AppLayout = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
 
-        {/* Auth User's Page */}
-        <Route path="/category-page" element={<CategoryPage />} />
-        <Route path="/course-details" element={<CourseDetailsPage />} />
-        <Route path="/shopping-cart" element={<ShoppingCartPage />} />
-        <Route path="/mentors-page" element={<MentorsPage />} />
-        <Route path="/dashboardpage" element={<Dashboardpage />} />
+        {/* only Auth User's can view the following Pages */}
+        <Route
+          path="/category-page"
+          element={
+            <ProtectedRoutes>
+              <CategoryPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/course-details"
+          element={
+            <ProtectedRoutes>
+              <CourseDetailsPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/shopping-cart"
+          element={
+            <ProtectedRoutes>
+              <ShoppingCartPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/mentors-page"
+          element={
+            <ProtectedRoutes>
+              <MentorsPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/dashboardpage"
+          element={
+            <ProtectedRoutes>
+              <Dashboardpage />
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
       {!isAuthPage && <Footer />}
     </>
