@@ -119,10 +119,12 @@ const Header = () => {
               <Button
                 btnText="Login"
                 btnStyle="w-full h-[40px] border border-main_heading bg-transparent text-sm"
+                btnFunc={goToSignin}
               />
               <Button
                 btnText="Sign Up"
                 btnStyle="w-full h-[40px] border border-main_heading bg-main_heading text-white text-sm"
+                btnFunc={goToSignup}
               />
             </div>
           </div>

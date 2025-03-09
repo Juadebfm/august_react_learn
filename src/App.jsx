@@ -20,6 +20,7 @@ import ThemeProvider from "./context/ThemeContext";
 import { JsonPlaceholderProvider } from "./context/JsonPlaceholderContext";
 import { ModalProvider } from "./context/ModalContext";
 import { AuthProvider } from "./context/AuthContext";
+import Dashboardpage from "./pages/Dashboard";
 
 // Layout component that conditionally renders Navbar
 const AppLayout = () => {
@@ -41,6 +42,7 @@ const AppLayout = () => {
         <Route path="/course-details" element={<CourseDetailsPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/mentors-page" element={<MentorsPage />} />
+        <Route path="/dashboardpage" element={<Dashboardpage />} />
       </Routes>
       {!isAuthPage && <Footer />}
     </>
